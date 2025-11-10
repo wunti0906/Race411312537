@@ -56,9 +56,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             RaceTheme {
-                GameScreen(message="橫式螢幕，隱藏狀態列.", gameViewModel)
+                // 將 message 替換為您的姓名
+                GameScreen(message="橫式螢幕，隱藏狀態列. **林彣媞**", gameViewModel)
             }
         }
     }
 }
-
