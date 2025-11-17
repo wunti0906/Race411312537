@@ -9,9 +9,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -122,6 +128,14 @@ fun GameScreen(message: String, gameViewModel: GameViewModel) {
                     else if (gameViewModel.winnerHorseIndex != -1) "下一輪賽馬"
                     else "遊戲開始"
                 )
+                var user by remember { mutableStateOf("") }
+                TextField(
+                    value = user,
+                    onValueChange = { user = it },
+                    label = { Text(text = "賽馬") },
+                    placeholder = { Text("猜猜哪匹馬獲勝?") }
+                )
+                Text("您輸入的姓名是：$user")
             }
         }
     }
