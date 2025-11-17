@@ -11,10 +11,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 
 @Composable
 fun GameScreen(message: String, gameViewModel: GameViewModel) {
+
+
+    val imageBitmap = ImageBitmap.imageResource(R.drawable.horse0)
+
 
     Box(modifier = Modifier
         .fillMaxSize()
@@ -28,15 +36,21 @@ fun GameScreen(message: String, gameViewModel: GameViewModel) {
                 }
             }
         ) {
-            // *** 修改：使用 ViewModel 中的座標來繪製圓形 ***
             drawCircle(
                 color = Color.Red,
                 radius = 100f,
                 center = Offset(gameViewModel.circleX, gameViewModel.circleY)
             )
+
+            drawImage(
+                image = imageBitmap,
+                dstOffset = IntOffset(0, 100),
+                dstSize = IntSize(300, 300)
+            )
+
         }
 
-        // *** 修改：顯示您的姓名和分數 ***
+
         Text(text = message + "\n"
                 + "螢幕尺寸: " + gameViewModel.screenWidthPx.toString() + " x "
                 + gameViewModel.screenHeightPx.toString() + "\n"
