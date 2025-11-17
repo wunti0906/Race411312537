@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             RaceTheme {
                 // 設定標題文字
-                GameScreen(message="賽馬遊戲 (作者：您的姓名)", gameViewModel)
+                GameScreen(message="賽馬遊戲 (作者：林彣媞)", gameViewModel)
             }
         }
     }
