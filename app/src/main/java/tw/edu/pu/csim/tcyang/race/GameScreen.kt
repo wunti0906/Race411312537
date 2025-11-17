@@ -61,6 +61,7 @@ fun GameScreen(message: String, gameViewModel: GameViewModel) {
         }
 
 
+
         Text(text = message + "\n"
                 + "螢幕尺寸: " + gameViewModel.screenWidthPx.toString() + " x "
                 + gameViewModel.screenHeightPx.toString() + "\n"
