@@ -23,7 +23,6 @@ fun GameScreen(message: String, gameViewModel: GameViewModel) {
 
     val imageBitmap = ImageBitmap.imageResource(R.drawable.horse0)
 
-
     Box(modifier = Modifier
         .fillMaxSize()
         .background(Color.Yellow)
