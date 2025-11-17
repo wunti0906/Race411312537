@@ -23,6 +23,9 @@ class GameViewModel: ViewModel() {
 
     var circleY by mutableStateOf(value = 0f)
 
+    val horse = Horse()
+
+
     // *** 新增：追蹤分數 ***
     var score by mutableStateOf(0)
         private set // 僅限內部修改分數
@@ -38,16 +41,19 @@ class GameViewModel: ViewModel() {
         circleY = screenHeightPx - 100f
 
         viewModelScope.launch {
-            while (gameRunning) { // 每0.1秒循環
+            while (gameRunning) {
                 delay(100)
                 circleX += 10
-
-                // *** 修改：判斷是否碰到右邊界，並增加分數 ***
-                // 圓形的右邊緣碰到螢幕右邊界 (圓心在 screenWidthPx - 圓半徑100f)
                 if (circleX >= screenWidthPx - 100f){
                     score++ // 分數 +1
                     circleX = 100f // 回到起點
                 }
+
+                horse.HorseRun()
+                if (horse.horseX >= screenWidthPx - 300){
+                    horse.horseX = 0
+                }
+
             }
         }
     }
