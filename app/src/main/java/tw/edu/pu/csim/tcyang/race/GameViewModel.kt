@@ -23,8 +23,8 @@ class GameViewModel: ViewModel() {
 
     var circleY by mutableStateOf(value = 0f)
 
-    val horse = Horse()
-
+    //val horse = Horse()
+    val horses = mutableListOf<Horse>()
 
     // *** 新增：追蹤分數 ***
     var score by mutableStateOf(0)
@@ -34,7 +34,12 @@ class GameViewModel: ViewModel() {
     fun SetGameSize(w: Float, h: Float) {
         screenWidthPx = w
         screenHeightPx = h
+
+        for (i in 0..2){
+            horses.add(Horse(i))
+        }
     }
+
     fun StartGame() {
         //回到初使位置
         circleX = 100f
@@ -49,9 +54,11 @@ class GameViewModel: ViewModel() {
                     circleX = 100f // 回到起點
                 }
 
-                horse.HorseRun()
-                if (horse.horseX >= screenWidthPx - 300){
-                    horse.horseX = 0
+                for (i in 0..2){
+                    horses[i].HorseRun()
+                    if (horses[i].horseX >= screenWidthPx - 200){
+                        horses[i].horseX = 0
+                    }
                 }
 
             }
